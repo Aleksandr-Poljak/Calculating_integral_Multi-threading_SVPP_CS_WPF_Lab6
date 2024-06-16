@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SVPP_CS_WPF_Lab6_Calculating_integral(Multi-threading)", "SVPP_CS_WPF_Lab6_Calculating_integral(Multi-threading).csproj", "{8D259E2A-3875-4A3B-AA2D-3B6812D191E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D259E2A-3875-4A3B-AA2D-3B6812D191E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D259E2A-3875-4A3B-AA2D-3B6812D191E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D259E2A-3875-4A3B-AA2D-3B6812D191E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D259E2A-3875-4A3B-AA2D-3B6812D191E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CDDD078-EF59-4E72-825F-1DD3B4DDBEB8}
+	EndGlobalSection
+EndGlobal
