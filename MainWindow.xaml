@@ -5,8 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Integral" Height="600" Width="600">
+    <Window.Resources>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontFamily" Value="Bodoni MT"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+        </Style>
 
+        <Style TargetType="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontStyle" Value="Oblique"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Background" Value="Green"/>
+        </Style>
+        
+    </Window.Resources>
+    <Grid x:Name="Grid_Main" Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="TextBlock_Title" 
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Text="Integral"/>
+        
+        <!--Select formula-->
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+            <TextBlock Text="Выберите формулу:" HorizontalAlignment="Center"
+                       Margin="5" FontSize="22"/>
+            
+            <ComboBox x:Name="ComboBox_Func" Margin="20 15 20 20">
+                <ComboBoxItem x:Name="ComboBoxItem_Func1">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock HorizontalAlignment="Left" FontSize="16"
+                                   Foreground="Black" Text="Метод правых прямоугольников"/>
+                        <Image Source="Images/1f.png" Stretch="None"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem x:Name="ComboBoxItem_Func2">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock HorizontalAlignment="Left" FontSize="16"
+                                   Foreground="Black" 
+                                   Text="Аналитическое вычисление определенного интеграла"/>
+                        <Image Source="Images/2f.png"/>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox>
+
+        </StackPanel>
+
+        <Button x:Name="Button_InputData" Grid.Row="1" Grid.Column="1" Margin="30 30 30 30"
+                Content="Ввести данные"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock Text="С помощью метода"/>
+            <Button/>
+            <Button/>
+            <Button/>
+
+        </StackPanel>
     </Grid>
 </Window>
