@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="WpfMath" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\1f.png" />
     <Resource Include="Images\2f.png" />
   </ItemGroup>
