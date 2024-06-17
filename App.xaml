@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StylesResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
          
     </Application.Resources>
 </Application>

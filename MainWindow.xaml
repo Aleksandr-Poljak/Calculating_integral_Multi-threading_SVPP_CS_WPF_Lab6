@@ -7,32 +7,7 @@
         mc:Ignorable="d"
         xmlns:wpfmath="clr-namespace:WpfMath.Controls;assembly=WpfMath"
         Title="Integral" Height="600" Width="600">
-    <Window.Resources>
-        
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="FontFamily" Value="Castellar"/>
-            <Setter Property="Foreground" Value="WhiteSmoke"/>
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontStyle" Value="Oblique"/>
-            <Setter Property="FontWeight" Value="Black"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="#FFE23B3B" Offset="0.448"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </Window.Resources>
+    
     <Grid x:Name="Grid_Main" Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
@@ -48,14 +23,14 @@
         <TextBlock x:Name="TextBlock_Title" 
                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Text="Integral"/>
+                   Text="Integral" FontSize="26" Style="{StaticResource Style_TitleText}"/>
         
         <!--Select formula-->
         <StackPanel x:Name="StackPanel_ChoiceFormula" Grid.Column="0" Grid.Row="1" 
                     Orientation="Vertical">
             
             <TextBlock Text="Выберите формулу:" HorizontalAlignment="Center"
-                       Margin="5" FontSize="22"/>
+                       Margin="5" FontSize="22" Style="{StaticResource Style_TitleText}"/>
 
             <ComboBox x:Name="ComboBox_Func" Margin="20 15 20 20">
 
@@ -82,7 +57,7 @@
         </StackPanel>
 
         <Button x:Name="Btn_InputData" Grid.Row="1" Grid.Column="1" Margin="30 30 30 30"
-                Content="Ввести данные">
+                Content="Ввести данные" FontSize="20" Style="{StaticResource Style_Btn}">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -92,11 +67,18 @@
 
         </Button>
 
-        <StackPanel x:Name="StackPanel_BtnsOperations" Grid.Row="2" Grid.Column="1">
-            <TextBlock Text="С помощью метода: " FontSize="20" Margin="10 0 10 20"/>
-            <Button x:Name="Btn_Thread" Content="Thread" Margin="10 0 10 20"/>
-            <Button x:Name="Btn_Worker" Content="Backgaund worker" Margin="10 0 10 20"/>
-            <Button x:Name="Btn_Async" Content="Async" Margin="10 0 10 15"/>
+        <StackPanel x:Name="StackPanel_BtnsOperations" Grid.Row="2" Grid.Column="1"
+                    TextBlock.FontSize="18">
+            
+            <TextBlock Text="Выполнить через: " FontSize="22" Margin="10 0 10 20"
+                       Style="{StaticResource Style_TitleText}"/>
+            
+            <Button x:Name="Btn_Thread" Content="New thread" Margin="10 0 10 20"
+                    Style="{StaticResource Style_Btn}"/>
+            <Button x:Name="Btn_Worker" Content="BackgaundWorker" Margin="10 0 10 20"
+                    Style="{StaticResource Style_Btn}"/>
+            <Button x:Name="Btn_Async" Content="Async" Margin="10 0 10 15"
+                    Style="{StaticResource Style_Btn}"/>
         </StackPanel>
 
         <ProgressBar x:Name="ProgressBar_Operation" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
