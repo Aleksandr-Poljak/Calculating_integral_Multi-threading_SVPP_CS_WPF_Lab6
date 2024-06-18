@@ -52,8 +52,8 @@
             <TextBlock Text="Выполнить через: " FontSize="22" Margin="10 40 10 20"
                        HorizontalAlignment="Center"
                        Style="{StaticResource Style_TitleText}"/>
-            
-            <Button x:Name="Btn_Thread" Content="New thread" Margin="10 0 10 20"
+
+            <Button x:Name="Btn_Thread" Content="Dispatcher" Margin="10 0 10 20"
                     Style="{StaticResource Style_Btn}"/>
             <Button x:Name="Btn_Worker" Content="BackgaundWorker" Margin="10 0 10 20"
                     Style="{StaticResource Style_Btn}"/>
