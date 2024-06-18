@@ -11,7 +11,7 @@
     <Grid x:Name="Grid_Main" Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
@@ -25,52 +25,31 @@
                    HorizontalAlignment="Center" VerticalAlignment="Center"
                    Text="Integral" FontSize="26" Style="{StaticResource Style_TitleText}"/>
         
-        <!--Select formula-->
-        <StackPanel x:Name="StackPanel_ChoiceFormula" Grid.Column="0" Grid.Row="1" 
-                    Orientation="Vertical">
-            
-            <TextBlock Text="Выберите формулу:" HorizontalAlignment="Center"
-                       Margin="5" FontSize="22" Style="{StaticResource Style_TitleText}"/>
+        <!--Result-->
+        <TextBlock Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                    Text="Результат:" Margin="15 10 10 10"
+                    FontSize="22" Style="{StaticResource Style_TitleText}"/>
 
-            <ComboBox x:Name="ComboBox_Func" Margin="20 15 20 20">
+        <ListBox x:Name="ListBox_Result" Grid.Row="2" Grid.Column="0" Background="Gray"/>
 
-                <ComboBoxItem x:Name="CmbItem_Func1" IsSelected="True">
-                    <TextBlock Text="Метод правых прямоугольников" FontSize="18" 
-                               Foreground="Black">
-                        <TextBlock.ToolTip>
-                            <Image Source="Images/1f.png" Width="300" Height="40"/>
-                        </TextBlock.ToolTip>
-                    </TextBlock>
-                </ComboBoxItem>
-
-                <ComboBoxItem x:Name="CmbItem_Func2">
-                    <TextBlock Text="Аналитическое вычисление интеграла" FontSize="18" 
-               Foreground="Black">
-                        <TextBlock.ToolTip>
-                            <Image Source="Images/2f.png" Width="100" Height="40"/>
-                        </TextBlock.ToolTip>
-                    </TextBlock>
-                </ComboBoxItem>
-
-            </ComboBox>
-
-        </StackPanel>
-
-        <Button x:Name="Btn_InputData" Grid.Row="1" Grid.Column="1" Margin="30 30 30 30"
-                Content="Ввести данные" FontSize="20" Style="{StaticResource Style_Btn}">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFE3C5C5" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-
-        </Button>
+        
 
         <StackPanel x:Name="StackPanel_BtnsOperations" Grid.Row="2" Grid.Column="1"
                     TextBlock.FontSize="18">
-            
-            <TextBlock Text="Выполнить через: " FontSize="22" Margin="10 0 10 20"
+
+            <Button x:Name="Btn_InputData"  Margin="27 0 27 0" Padding="10"
+        Content="Ввести данные" FontSize="18" Style="{StaticResource Style_Btn}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFE3C5C5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <TextBlock Text="Выполнить через: " FontSize="22" Margin="10 40 10 20"
+                       HorizontalAlignment="Center"
                        Style="{StaticResource Style_TitleText}"/>
             
             <Button x:Name="Btn_Thread" Content="New thread" Margin="10 0 10 20"
