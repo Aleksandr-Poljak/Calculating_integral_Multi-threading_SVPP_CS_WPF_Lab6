@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_"
         mc:Ignorable="d"
-        Title="OptionsWindow" Height="350" Width="300">
+        Title="Options" Height="350" Width="300">
     <Grid x:Name="Grid_OptionMain" Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -17,5 +17,26 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
+        <TextBlock Text="A=" Grid.Row="0" Grid.Column="0"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
+                   Style="{StaticResource Style_TitleText}"/>
+
+        <TextBlock Text="B=" Grid.Row="1" Grid.Column="0"
+           VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
+           Style="{StaticResource Style_TitleText}"/>
+
+        <TextBlock Text="H=" Grid.Row="2" Grid.Column="0"
+           VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
+           Style="{StaticResource Style_TitleText}"/>
+
+        <Button x:Name="Btn_Select" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
+                Content="Выбрать" Style="{StaticResource Style_Btn}"
+                Background="ForestGreen" Margin="25" Click="Btn_Select_Click"/>
+
+        <TextBox x:Name="TextBox_A" Grid.Row="0" Grid.Column="1" Margin="25"/>
+        <TextBox x:Name="TextBox_B" Grid.Row="1" Grid.Column="1" Margin="25"/>
+        <TextBox x:Name="TextBox_H" Grid.Row="2" Grid.Column="1" Margin="25"/>
+
     </Grid>
 </Window>

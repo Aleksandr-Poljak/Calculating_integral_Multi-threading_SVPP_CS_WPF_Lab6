@@ -23,5 +23,11 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         {
             InitializeComponent();
         }
+
+        private void Btn_Select_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();   
+        }
     }
 }
