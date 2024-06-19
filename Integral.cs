@@ -37,7 +37,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
                             error = "Некорректное значение. Значение должно быть в диапазоне от -1 до 1";
                         break;
                     case "End":
-                        if (End < Start || End < 0) 
+                        if (End < Start ) 
                             error = "Некорректное значение.";
                         break;
                     case "Steps":
@@ -58,6 +58,11 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
             Start = start;
             End = end;
             Steps = steps;
+        }
+
+        public override string ToString()
+        {
+            return $"Start: {Start}\nEnd: {End}\nSteps: {Steps}";
         }
 
     }

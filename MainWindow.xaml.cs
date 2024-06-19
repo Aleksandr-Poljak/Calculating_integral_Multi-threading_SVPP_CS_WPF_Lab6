@@ -16,6 +16,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
     /// </summary>
     public partial class MainWindow : Window
     {
+        Integral? integral;
         public MainWindow()
         {
             InitializeComponent();
@@ -24,8 +25,15 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         private void Btn_InputData_Click(object sender, RoutedEventArgs e)
         {
             OptionsWindow optWindow = new();
+
+            if (optWindow.ShowDialog() is not true) return;
+            integral = optWindow.integral;
+            MessageBox.Show(integral?.ToString());
+        }
+
+        private void Btn_Thread_Click(object sender, RoutedEventArgs e)
+        {
             
-            optWindow.ShowDialog();
         }
     }
 }

@@ -30,13 +30,44 @@
            VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
            Style="{StaticResource Style_TitleText}"/>
 
-        <Button x:Name="Btn_Select" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
-                Content="Выбрать" Style="{StaticResource Style_Btn}"
-                Background="ForestGreen" Margin="25" Click="Btn_Select_Click"/>
+        <Button x:Name="Btn_Ok" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
+                Content="Принять" Style="{StaticResource Style_Btn}"
+                Background="ForestGreen" Margin="25" Click="Btn_Ok_Click">
+        </Button>
 
-        <TextBox x:Name="TextBox_A" Grid.Row="0" Grid.Column="1" Margin="25"/>
-        <TextBox x:Name="TextBox_B" Grid.Row="1" Grid.Column="1" Margin="25"/>
-        <TextBox x:Name="TextBox_H" Grid.Row="2" Grid.Column="1" Margin="25"/>
+        <TextBox x:Name="TextBox_A" Grid.Row="0" Grid.Column="1" Margin="25"
+                 Style="{StaticResource Style_TextBoxInput}" TextChanged="TextInput_Validate">
+            <TextBox.Text>
+                <Binding Path="Start" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        
+        <TextBox x:Name="TextBox_B" Grid.Row="1" Grid.Column="1" Margin="25"
+                 Style="{StaticResource Style_TextBoxInput}" TextChanged="TextInput_Validate">
+            <TextBox.Text>
+                <Binding Path="End" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox x:Name="TextBox_H" Grid.Row="2" Grid.Column="1" Margin="25" 
+                 Style="{StaticResource Style_TextBoxInput}" TextChanged="TextInput_Validate">
+            <TextBox.Text>
+                <Binding Path="Steps" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                     <Binding.ValidationRules>
+                         <DataErrorValidationRule/>
+                      </Binding.ValidationRules>
+                </Binding>
+             </TextBox.Text>
+        </TextBox>
+            
 
     </Grid>
 </Window>

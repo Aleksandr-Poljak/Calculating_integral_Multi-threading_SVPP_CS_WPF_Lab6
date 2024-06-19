@@ -19,15 +19,27 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
     /// </summary>
     public partial class OptionsWindow : Window
     {
+        public Integral integral = new(0, 5, 120);
+
         public OptionsWindow()
         {
             InitializeComponent();
+            Grid_OptionMain.DataContext = integral;
         }
 
-        private void Btn_Select_Click(object sender, RoutedEventArgs e)
+        private void Btn_Ok_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
             this.Close();   
+        }
+
+        private void TextInput_Validate(object sender, TextChangedEventArgs e)
+        {
+            
+            TextBox tb = (TextBox)sender;
+            if (tb.GetBindingExpression(TextBox.TextProperty).HasValidationError is true)
+                Btn_Ok.IsEnabled = false;
+            else Btn_Ok.IsEnabled = true;
         }
     }
 }

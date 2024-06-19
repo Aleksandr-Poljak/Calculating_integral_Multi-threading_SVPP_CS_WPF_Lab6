@@ -54,7 +54,7 @@
                        Style="{StaticResource Style_TitleText}"/>
 
             <Button x:Name="Btn_Thread" Content="Dispatcher" Margin="10 0 10 20"
-                    Style="{StaticResource Style_Btn}"/>
+                    Style="{StaticResource Style_Btn}" Click="Btn_Thread_Click"/>
             <Button x:Name="Btn_Worker" Content="BackgaundWorker" Margin="10 0 10 20"
                     Style="{StaticResource Style_Btn}"/>
             <Button x:Name="Btn_Async" Content="Async" Margin="10 0 10 15"

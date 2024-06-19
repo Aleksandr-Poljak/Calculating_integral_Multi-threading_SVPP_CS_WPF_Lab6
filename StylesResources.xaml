@@ -22,4 +22,16 @@
         </Setter>
     </Style>
 
+    <Style x:Key="Style_TextBoxInput">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="TextBox.ToolTip" 
+                        Value="{Binding RelativeSource={RelativeSource Self}, 
+                    Path=(Validation.Errors)[0].ErrorContent}"/>
+                <Setter Property="TextBox.Foreground" Value="Red"/>
+            </Trigger>
+        </Style.Triggers>
+        
+    </Style>
+
 </ResourceDictionary>
