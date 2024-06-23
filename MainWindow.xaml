@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_"
         mc:Ignorable="d"
         xmlns:wpfmath="clr-namespace:WpfMath.Controls;assembly=WpfMath"
+        xmlns:cm="clr-namespace:System.ComponentModel;assembly=System"
         Title="Integral" Height="600" Width="600">
+    <Window.Resources>
+        <cm:BackgroundWorker x:Name="BgWorker" x:Key="BgWorker" 
+                             WorkerReportsProgress="True"
+                             DoWork="BgWorker_DoWork"
+                             RunWorkerCompleted="BgWorker_Completed" 
+                             ProgressChanged="BgWorker_ProgressChanged"/>
+    </Window.Resources>
     
     <Grid x:Name="Grid_Main" Background="Gray">
         <Grid.RowDefinitions>

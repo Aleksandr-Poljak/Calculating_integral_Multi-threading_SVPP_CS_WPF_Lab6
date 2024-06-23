@@ -19,7 +19,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
     /// </summary>
     public partial class OptionsWindow : Window
     {
-        public Integral integral = new(0, 5.7, 1000);
+        public Integral integral = new(0, 5.7, 120);
 
         public OptionsWindow()
         {

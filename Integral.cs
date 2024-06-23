@@ -15,6 +15,10 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         private double x;
         private double s;
 
+        public IntegralStepEventArgs() :base()
+        {
+        }
+
         public IntegralStepEventArgs(int currentStep, double x, double s): base()
         {
             CurrentStep = currentStep;
@@ -96,7 +100,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
             double S = 0;
             for (int i = 0; i < Steps; i++)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(100);
                 double x = Start + i * h;
                 S += func(x) * h;
 
@@ -122,6 +126,16 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
             else result = 0;
 
             EventStep -= SaveValue;
+        }
+
+        /// <summary>
+        /// Удаляет все обработчики у всех событий.
+        /// </summary>
+        public void ClearEventsHandlers()
+        {
+            EventBefore = null;
+            EventStep = null;
+            EventCompleted = null;
         }
 
     }
