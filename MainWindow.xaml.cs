@@ -42,18 +42,22 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         {
             if(integral != null)
             {
-                // Доавбление  объекту Integral обработчика события,
+                // Добавление  объекту Integral обработчика события,
                 // возникающему до начала вычисления. Обработчик отключает кнопки
                 integral.EventBefore += ButtonsOff_Dispatcher;
 
-                // Доавбление  объекту Integral обработчика события,
+                // Добавление  объекту Integral обработчика события,
                 // возникающему после вычисления.Обработчик включает кнопки
                 integral.EventCompleted += ButtonsOn_Dispatcher;
 
-                // Доавбление  объекту Integral обработчика события,
+                // Добавление  объекту Integral обработчика события,
                 // на каждой итерации цикла вычисления. Обработчик добавляет промежуточные
                 // результаты в ListBox_Result
                 integral.EventStep += WriteListBox_Dispatcher;
+
+                // Добавление  объекту Integral обработчика события,
+                // на каждой итерации цикла вычисления. Обработчик увеличивает ProgressBar.
+                integral.EventStep += AddProgressBar;
 
                 //Запуск нвого потока
                 Thread th = new Thread(new ThreadStart(integral.Calculate));
@@ -63,11 +67,10 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
 
         }
 
-        
 
         private void Btn_Worker_Click(object sender, RoutedEventArgs e)
         {
-           
+            
         }
 
         private void Btn_Async_Click(object sender, RoutedEventArgs e)
@@ -120,6 +123,26 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         private void ButtonsOff_Dispatcher(object? sender, EventArgs e)
         {
             Dispatcher.Invoke(new Action(() => AllButtons_OnOff(false)));
+        }
+
+        /// <summary>
+        /// Увеличивает ProgressBar
+        /// </summary>    
+        private void InstallProgressBar(double value)
+        {
+            ProgressBar_Operation.Value = value;
+        }
+
+        /// <summary>
+        ///  Обработчик события для увелечения ProgressBar из другого потока.
+        /// </summary>
+        private void AddProgressBar(object? sender, IntegralStepEventArgs e)
+        {
+            if (integral is null) return;
+
+            double progressValue = (e.CurrentStep / (double)integral.Steps) * 100;
+            Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                new Action(() => InstallProgressBar(progressValue) ));
         }
     }
 }

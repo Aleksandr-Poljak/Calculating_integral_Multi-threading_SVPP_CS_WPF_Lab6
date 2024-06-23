@@ -96,10 +96,11 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
             double S = 0;
             for (int i = 0; i < Steps; i++)
             {
+                Thread.Sleep(500);
                 double x = Start + i * h;
                 S += func(x) * h;
 
-                EventStep?.Invoke(this, new IntegralStepEventArgs(i+1, x, S));
+                EventStep?.Invoke(this, new IntegralStepEventArgs(i+1, x, S));               
             }
 
             EventCompleted?.Invoke(this, new EventArgs());
