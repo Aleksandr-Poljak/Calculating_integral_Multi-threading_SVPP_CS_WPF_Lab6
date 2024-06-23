@@ -53,12 +53,12 @@
                        HorizontalAlignment="Center"
                        Style="{StaticResource Style_TitleText}"/>
 
-            <Button x:Name="Btn_Thread" Content="Dispatcher" Margin="10 0 10 20"
-                    Style="{StaticResource Style_Btn}" Click="Btn_Thread_Click"/>
+            <Button x:Name="Btn_Dispathcer" Content="Dispatcher" Margin="10 0 10 20"
+                    Style="{StaticResource Style_Btn}" Click="Btn_Dispathcer_Click"/>
             <Button x:Name="Btn_Worker" Content="BackgaundWorker" Margin="10 0 10 20"
-                    Style="{StaticResource Style_Btn}"/>
+                    Style="{StaticResource Style_Btn}" Click="Btn_Worker_Click"/>
             <Button x:Name="Btn_Async" Content="Async" Margin="10 0 10 15"
-                    Style="{StaticResource Style_Btn}"/>
+                    Style="{StaticResource Style_Btn}" Click="Btn_Async_Click"/>
         </StackPanel>
 
         <ProgressBar x:Name="ProgressBar_Operation" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"

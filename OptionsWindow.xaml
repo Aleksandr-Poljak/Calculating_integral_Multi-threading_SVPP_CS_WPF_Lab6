@@ -38,7 +38,7 @@
         <TextBox x:Name="TextBox_A" Grid.Row="0" Grid.Column="1" Margin="25"
                  Style="{StaticResource Style_TextBoxInput}" TextChanged="TextInput_Validate">
             <TextBox.Text>
-                <Binding Path="Start" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="Start"  Mode="TwoWay">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
@@ -49,7 +49,7 @@
         <TextBox x:Name="TextBox_B" Grid.Row="1" Grid.Column="1" Margin="25"
                  Style="{StaticResource Style_TextBoxInput}" TextChanged="TextInput_Validate">
             <TextBox.Text>
-                <Binding Path="End" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="End"  Mode="TwoWay">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
@@ -60,7 +60,7 @@
         <TextBox x:Name="TextBox_H" Grid.Row="2" Grid.Column="1" Margin="25" 
                  Style="{StaticResource Style_TextBoxInput}" TextChanged="TextInput_Validate">
             <TextBox.Text>
-                <Binding Path="Steps" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="Steps"  Mode="TwoWay">
                      <Binding.ValidationRules>
                          <DataErrorValidationRule/>
                       </Binding.ValidationRules>

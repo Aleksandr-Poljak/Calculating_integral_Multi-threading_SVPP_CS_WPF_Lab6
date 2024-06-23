@@ -8,20 +8,40 @@ using System.Threading.Tasks;
 
 namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
 {
+
+    public class IntegralStepEventArgs: EventArgs
+    {
+        private int currentStep;
+        private double x;
+        private double s;
+
+        public IntegralStepEventArgs(int currentStep, double x, double s): base()
+        {
+            CurrentStep = currentStep;
+            X = x;
+            S = s;
+        }
+
+        public int CurrentStep { get => currentStep; set => currentStep = value; }
+        public double X { get => x; set => x = value; }
+        public double S { get => s; set => s = value; }
+    }
+
     public class Integral: IDataErrorInfo
     {
         double start;
         double end;
         int steps;
 
-        public Func<double,double> func = (x) => Math.Pow(x, 3);
-        public event EventHandler? EventBefore;
-        public event EventHandler? EventCompleted;
-        public event EventHandler? EventtStep;
+        public Func<double,double> func = (x) => Math.Pow(x, 3); // Функция интеграла
+        public event EventHandler? EventBefore; // Событие до начала вычислений
+        public event EventHandler? EventCompleted; // Событие после окончания вычислений
+        // Соыбтие на каждой итерации цикла вычислений
+        public event EventHandler<IntegralStepEventArgs>? EventStep; 
         
-        public double Start { get => start; set => start = value; }
-        public double End { get => end; set => end = value; }
-        public int Steps { get => steps; set => steps = value; }
+        public double Start { get => start; set => start = value; } // Начало диапазона
+        public double End { get => end; set => end = value; } // Конец диапазона
+        public int Steps { get => steps; set => steps = value; } // Количество разбиений
 
         public string Error => throw new NotImplementedException();
 
@@ -63,6 +83,44 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         public override string ToString()
         {
             return $"Start: {Start}\nEnd: {End}\nSteps: {Steps}";
+        }
+        /// <summary>
+        /// Вычисляет инетеграл методом прямоугольников.
+        /// Возвращает результат через события
+        /// </summary>
+        public void Calculate()
+        {
+            EventBefore?.Invoke(this, new EventArgs());
+
+            double h = (End - Start) / Steps;
+            double S = 0;
+            for (int i = 0; i < Steps; i++)
+            {
+                double x = Start + i * h;
+                S += func(x) * h;
+
+                EventStep?.Invoke(this, new IntegralStepEventArgs(i+1, x, S));
+            }
+
+            EventCompleted?.Invoke(this, new EventArgs());
+        }
+
+        /// <summary>
+        /// Возвращает результат через выходной параметр.
+        /// </summary>
+        public void Calculate( out double result)
+        {
+            List<double> results =  new();
+            EventHandler<IntegralStepEventArgs> SaveValue =
+                (object? sender, IntegralStepEventArgs e) => results.Add(e.S);
+
+            EventStep += SaveValue;
+
+            Calculate();
+            if(results.Any()) result = results.Last();
+            else result = 0;
+
+            EventStep -= SaveValue;
         }
 
     }

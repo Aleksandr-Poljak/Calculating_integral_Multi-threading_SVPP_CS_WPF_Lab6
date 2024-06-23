@@ -19,7 +19,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
     /// </summary>
     public partial class OptionsWindow : Window
     {
-        public Integral integral = new(0, 5, 120);
+        public Integral integral = new(0, 5.7, 1000);
 
         public OptionsWindow()
         {
@@ -33,9 +33,12 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
             this.Close();   
         }
 
+        /// <summary>
+        /// Обработчик события ввода данных. Отключает кнопку OK, если вводятся некорректные данные.
+        /// </summary>
         private void TextInput_Validate(object sender, TextChangedEventArgs e)
         {
-            
+
             TextBox tb = (TextBox)sender;
             if (tb.GetBindingExpression(TextBox.TextProperty).HasValidationError is true)
                 Btn_Ok.IsEnabled = false;
