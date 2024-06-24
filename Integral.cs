@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
 {
-
+    /// <summary>
+    /// Класс аргумментов для события вызывайммого в процессе вычисления интеграла
+    /// </summary>
     public class IntegralStepEventArgs: EventArgs
     {
         private int currentStep;
@@ -31,19 +34,24 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         public double S { get => s; set => s = value; }
     }
 
+    /// <summary>
+    /// Класс интеграла
+    /// </summary>
     public class Integral: IDataErrorInfo
     {
         double start;
         double end;
         int steps;
 
-        //public Func<double,double> func = (x) => Math.Pow(x, 3); // Функция интеграла
         public Func<double, double> func = (x) => Math.Sqrt(x); // Функция интеграла
-        public event EventHandler? EventBefore; // Событие до начала вычислений
-        public event EventHandler? EventCompleted; // Событие после окончания вычислений
-        // Соыбтие на каждой итерации цикла вычислений
-        public event EventHandler<IntegralStepEventArgs>? EventStep; 
-        
+
+        // Событие вызываймое до начала вычислений
+        public event EventHandler? EventBefore;
+        // Событие вызываймое после окончания вычислений
+        public event EventHandler? EventCompleted; 
+        // Событие вызываймое на каждой итерации цикла вычислений
+        public event EventHandler<IntegralStepEventArgs>? EventStep;
+
         public double Start { get => start; set => start = value; } // Начало диапазона
         public double End { get => end; set => end = value; } // Конец диапазона
         public int Steps { get => steps; set => steps = value; } // Количество разбиений
@@ -89,6 +97,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         {
             return $"Start: {Start}\nEnd: {End}\nSteps: {Steps}";
         }
+
         /// <summary>
         /// Вычисляет инетеграл методом прямоугольников.
         /// Возвращает результат через события
@@ -107,7 +116,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
 
                 EventStep?.Invoke(this, new IntegralStepEventArgs(i+1, x, S));               
             }
-
+            
             EventCompleted?.Invoke(this, new EventArgs());
         }
 

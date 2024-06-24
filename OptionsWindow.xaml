@@ -20,15 +20,15 @@
 
         <TextBlock Text="A=" Grid.Row="0" Grid.Column="0"
                    VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
-                   Style="{StaticResource Style_TitleText}"/>
+                   Style="{StaticResource Style_Text}"/>
 
         <TextBlock Text="B=" Grid.Row="1" Grid.Column="0"
            VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
-           Style="{StaticResource Style_TitleText}"/>
+           Style="{StaticResource Style_Text}"/>
 
         <TextBlock Text="H=" Grid.Row="2" Grid.Column="0"
            VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"
-           Style="{StaticResource Style_TitleText}"/>
+           Style="{StaticResource Style_Text}"/>
 
         <Button x:Name="Btn_Ok" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
                 Content="Принять" Style="{StaticResource Style_Btn}"
@@ -68,6 +68,5 @@
              </TextBox.Text>
         </TextBox>
             
-
     </Grid>
 </Window>

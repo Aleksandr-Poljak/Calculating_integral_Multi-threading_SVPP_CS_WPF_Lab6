@@ -24,7 +24,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         public OptionsWindow()
         {
             InitializeComponent();
-            Grid_OptionMain.DataContext = integral;
+            this.DataContext = integral;
         }
 
         private void Btn_Ok_Click(object sender, RoutedEventArgs e)

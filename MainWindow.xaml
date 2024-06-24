@@ -31,13 +31,15 @@
         <TextBlock x:Name="TextBlock_Title" 
                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Text="Integral" FontSize="26" Style="{StaticResource Style_TitleText}"/>
-        
+                   Text="Integral" FontSize="26" Style="{StaticResource Style_Text}">
+        </TextBlock>
+
+
         <!--Result-->
         <TextBlock Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Left"
                    VerticalAlignment="Bottom"
                     Text="Результат:" Margin="15 10 10 10"
-                    FontSize="22" Style="{StaticResource Style_TitleText}"/>
+                    FontSize="22" Style="{StaticResource Style_Text}"/>
 
         <ListBox x:Name="ListBox_Result" Grid.Row="2" Grid.Column="0"
                   Margin="15 5 5 0" Background="Gray"/>
@@ -59,7 +61,7 @@
 
             <TextBlock Text="Выполнить через: " FontSize="22" Margin="10 40 10 20"
                        HorizontalAlignment="Center"
-                       Style="{StaticResource Style_TitleText}"/>
+                       Style="{StaticResource Style_Text}"/>
 
             <Button x:Name="Btn_Dispathcer" Content="Dispatcher" Margin="10 0 10 20"
                     Style="{StaticResource Style_Btn}" Click="Btn_Dispathcer_Click"/>
@@ -71,11 +73,11 @@
 
         <ProgressBar x:Name="ProgressBar_Operation" Grid.Row="3" Grid.Column="0" 
                      Grid.ColumnSpan="2"
-                     Height="30" Margin="20 0 60 0" Minimum="0" Maximum="100" />
+                     Height="30" Margin="20 0 70 0" Minimum="0" Maximum="100" />
 
         <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right"
                    VerticalAlignment="Center" Margin="0 0 5 0" 
-                   Style="{StaticResource Style_TitleText}" FontSize="16" Foreground="Red"
+                   Style="{StaticResource Style_Text}" FontSize="16" Foreground="Red"
                    Text="{Binding StringFormat={}{0:F1}%,
             ElementName= ProgressBar_Operation, Path=Value}"/>
     </Grid>
