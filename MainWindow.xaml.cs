@@ -84,7 +84,7 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
 
         /// <summary>
         ///  Обработчик события кнопки BackgroundWorker
-        /// Очищает ListBox, Добавляет интегралу обрабочик события для записи в ListBox,
+        /// Очищает ListBox, Добавляет объекту интегралу обрабочик события для записи в ListBox,
         /// Запускает worker. 
         /// </summary>
         private void Btn_Worker_Click(object sender, RoutedEventArgs e)
@@ -143,9 +143,30 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         /*
          * _______________Вычисление через асинхронный стрим ___________________________________
          */
-        private void Btn_Async_Click(object sender, RoutedEventArgs e)
-        {
 
+        /// <summary>
+        ///  Обработчик события кнопки Async
+        /// Очищает ListBox, выключает кнопки, выполняет асинхронное вычисление интеграла, 
+        /// записывает результат в ListBox, включает кнопки.
+        /// Запускает worker. 
+        /// </summary>
+        private async void Btn_Async_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox_Result.Items.Clear();
+            AllButtons_OnOff(false);
+
+            if(integral is null) return;
+            IAsyncEnumerable<Dictionary<string, double>> data = integral.CalculateAsync();
+
+            await foreach (var dict in data) 
+            {
+                WriteListBox(dict["X"], dict["S"]);
+
+                double progressValue = (dict["i"] / (double)integral.Steps) * 100;
+                InstallProgressBar(progressValue);
+            }
+
+            AllButtons_OnOff(true);
         }
 
         /*

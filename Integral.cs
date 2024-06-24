@@ -37,7 +37,8 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
         double end;
         int steps;
 
-        public Func<double,double> func = (x) => Math.Pow(x, 3); // Функция интеграла
+        //public Func<double,double> func = (x) => Math.Pow(x, 3); // Функция интеграла
+        public Func<double, double> func = (x) => Math.Sqrt(x); // Функция интеграла
         public event EventHandler? EventBefore; // Событие до начала вычислений
         public event EventHandler? EventCompleted; // Событие после окончания вычислений
         // Соыбтие на каждой итерации цикла вычислений
@@ -110,6 +111,8 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
             EventCompleted?.Invoke(this, new EventArgs());
         }
 
+       
+
         /// <summary>
         /// Возвращает результат через выходной параметр.
         /// </summary>
@@ -126,6 +129,29 @@ namespace SVPP_CS_WPF_Lab6_Calculating_integral_Multi_threading_
             else result = 0;
 
             EventStep -= SaveValue;
+        }
+
+        /// <summary>
+        /// Вычисляет инетеграл методом прямоугольников.
+        /// Возвращает результат в словаре асинхронно.
+        /// </summary>
+        public async IAsyncEnumerable<Dictionary<string, double>> CalculateAsync()
+        {
+            double h = (End - Start) / Steps;
+            double S = 0;
+
+            for (int i = 0; i < Steps; i++)
+            {
+                double x = Start + i * h;
+                S += func(x) * h;
+                await Task.Delay(100); // OR await Task.Yield(); 
+                yield return new Dictionary<string, double>
+                {
+                    {"i", i+1},
+                    {"S", S},
+                    {"X", x },
+                };
+            }
         }
 
         /// <summary>
